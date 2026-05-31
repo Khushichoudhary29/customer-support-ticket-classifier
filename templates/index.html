@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support Ticket Classifier</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Customer Support Ticket Classification System</h1>
+
+    <p class="subtitle">
+        Predict the category of a customer support ticket using Machine Learning
+    </p>
+
+    <textarea
+        id="ticketText"
+        placeholder="Enter customer support ticket here..."
+    ></textarea>
+
+    <button onclick="predictTicket()">
+        Predict Category
+    </button>
+
+    <div id="resultBox" class="hidden">
+        <h3>Prediction Result</h3>
+
+        <p>
+            <strong>Category:</strong>
+            <span id="prediction"></span>
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+async function predictTicket() {
+
+    const ticketText =
+        document.getElementById("ticketText").value;
+
+    if(ticketText.trim() === "") {
+
+        alert("Please enter ticket text");
+
+        return;
+    }
+
+    const response = await fetch("/predict", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            text: ticketText
+        })
+
+    });
+
+    const data = await response.json();
+
+    document.getElementById("prediction").innerText =
+        data.prediction;
+
+    document.getElementById("resultBox")
+        .classList.remove("hidden");
+}
+
+</script>
+
+</body>
+</html>

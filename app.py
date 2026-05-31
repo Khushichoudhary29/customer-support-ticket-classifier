@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 
 app = Flask(__name__)
@@ -18,9 +18,7 @@ def predict_ticket(text):
 
 @app.route("/")
 def home():
-
-    return "Customer Support Ticket Classifier API Running"
-
+    return render_template("index.html")
 
 @app.route("/predict", methods=["POST"])
 def predict():
