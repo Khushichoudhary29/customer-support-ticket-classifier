@@ -1,3 +1,57 @@
+# Virtual Environment
+
 venv/
-__pycache__/
-*.pkl
+.env
+
+# Python Cache
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# VS Code
+
+.vscode/
+
+# Database Files
+
+*.db
+*.sqlite3
+
+# Model Artifacts (Optional)
+
+# Uncomment if model files are very large
+
+# model/model.pkl
+
+# model/vectorizer.pkl
+
+# OS Files
+
+.DS_Store
+Thumbs.db
+
+# Logs
+
+*.log
+
+# Temporary Files
+
+temp/
+tmp/
+
+# Build Files
+
+build/
+dist/
+*.egg-info/
+
+# Environment Variables
+
+.env.local
+.env.production
