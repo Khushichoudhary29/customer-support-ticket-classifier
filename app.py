@@ -6,7 +6,8 @@ import numpy as np
 
 from database.db import (
     save_prediction,
-    get_prediction_history
+    get_prediction_history,
+    get_statistics
 )
 
 app = Flask(__name__)
@@ -116,6 +117,14 @@ def export_history():
     return send_file(
         csv_file,
         as_attachment=True
+    )
+    
+    
+@app.route("/stats")
+def stats():
+
+    return jsonify(
+        get_statistics()
     )
 
 

@@ -186,6 +186,40 @@
 
 
 
+
+
+<div class="row mt-4">
+
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h6>Total Predictions</h6>
+                <h2 id="totalPredictions">0</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h6>Most Common Category</h6>
+                <h5 id="mostCommonCategory">-</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h6>Average Confidence</h6>
+                <h2 id="averageConfidence">0%</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
 </div>
 ```
 
@@ -258,6 +292,35 @@ async function predictTicket() {
     document.getElementById("historyTable")
         .innerHTML += row;
 }
+
+
+
+
+async function loadStats() {
+
+    const response =
+        await fetch("/stats");
+
+    const data =
+        await response.json();
+
+    document.getElementById(
+        "totalPredictions"
+    ).innerText =
+        data.total_predictions;
+
+    document.getElementById(
+        "mostCommonCategory"
+    ).innerText =
+        data.most_common_category;
+
+    document.getElementById(
+        "averageConfidence"
+    ).innerText =
+        data.average_confidence + "%";
+}
+
+loadStats();
 
 </script>
 
