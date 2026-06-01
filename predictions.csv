@@ -1,0 +1,6 @@
+id,ticket_text,prediction,confidence,created_at
+5,unable to see information,Subscription Cancellation,10.15,2026-06-01 06:01:48
+4,I would like a refund for my recent purchase,Feature Request,10.27,2026-05-31 12:12:07
+3,i am unable to login,Subscription Cancellation,10.19,2026-05-31 12:11:09
+2,i am unable to cancel my ticket,Subscription Cancellation,10.2,2026-05-31 12:10:56
+1,i am unable to login,Subscription Cancellation,10.19,2026-05-31 12:10:16

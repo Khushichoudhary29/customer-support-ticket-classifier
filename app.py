@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify, render_template
+import pandas as pd
+from flask import send_file
 import joblib
 import numpy as np
 
@@ -93,6 +95,28 @@ def history():
     records = get_prediction_history()
 
     return jsonify(records)
+
+
+@app.route("/export")
+def export_history():
+
+    records = get_prediction_history()
+
+    if not records:
+        return jsonify({
+            "message": "No prediction history found."
+        })
+
+    df = pd.DataFrame(records)
+
+    csv_file = "predictions.csv"
+
+    df.to_csv(csv_file, index=False)
+
+    return send_file(
+        csv_file,
+        as_attachment=True
+    )
 
 
 # --------------------------------------------------
